@@ -9,7 +9,7 @@ pipeline {
                  stage('build') {
                              steps {
                               script {
-                    def mvnHome = tool 'Maven 3.3.9'
+                    def mvnHome = tool 'maven'
                     if (isUnix()) {
                         def targetVersion = getDevVersion()
                         print 'target build version...'
