@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage('clone') {
+            steps {
             git credentialsId: '1a890ea9-a7a0-4dc6-b0d1-a86d441f8a67', url: 'https://github.com/naveen-goli/net.git'
+        }
         }
     }
     
