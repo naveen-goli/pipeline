@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     def mshome = tool 'MsBuildLocal'
-                    print mshome
+                     bat(/"${mshome}\msbuild.exe" /t:rebuild/)
                 }
             }
         }
