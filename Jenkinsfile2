@@ -11,7 +11,7 @@ pipeline {
                 script {
                     def mshome = tool 'MsBuildLocal'
                      bat(/"${mshome}\msbuild.exe" WebApplication1.sln /)
-                     archiveArtifacts 'WebApplication1/bin/Release/**'
+                     archiveArtifacts 'WebApplication1/bin/**'
                 }
             }
         }
