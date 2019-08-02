@@ -13,9 +13,9 @@ pipeline {
     def sonarHome = tool 'sonarMSbuild'
      def mshome = tool 'MsBuildLocal'
     withSonarQubeEnv('SonarQube_test') {
-      bat (/"${sonarHome}\SonarQube.Scanner.MSBuild.exe" begin \/k:myKey)
+      bat (/"${sonarHome}\SonarQube.Scanner.MSBuild.exe" begin \/k:myKey/)
       bat(/"${mshome}\msbuild.exe" WebApplication1.sln \/t:rebuild/)
-      bat (/"${sonarHome}\SonarQube.Scanner.MSBuild.exe" end)
+      bat (/"${sonarHome}\SonarQube.Scanner.MSBuild.exe" end/)
     }
   }
     }
