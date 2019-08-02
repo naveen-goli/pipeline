@@ -13,8 +13,9 @@ pipeline {
     def sonarHome = tool 'sonarMSbuild'
      def mshome = tool 'MsBuildLocal'
     withSonarQubeEnv('SonarQube_test') {
-      bat (/"${sonarHome}\SonarQube.Scanner.MSBuild.exe" begin \/k:myKey/)
+      bat (/"${sonarHome}\SonarQube.Scanner.MSBuild.exe" begin \/k:myKey1 \/d:sonar.cs.opencover.reportsPaths="d:\coverage.xml" \/d:sonar.coverage.exclusions="Sample.WiTronix.Web\scripts\ai.0.22.9-build00167.js"/)
       bat(/"${mshome}\msbuild.exe" WebApplication1.sln \/t:rebuild/)
+      bat(/OpenCover.Console.exe -target:"mstest.exe" -register -targetargs:"\/testcontainer:Sample.WiTronix.Business.Test\bin\Debug\Sample.WiTronix.Business.Test.dll \/testcontainer:Sample.WiTronix.DataAccess.Test\bin\Debug\Sample.WiTronix.DataAccess.Test.dll" -output:"d:\coverage.xml"/)
       bat (/"${sonarHome}\SonarQube.Scanner.MSBuild.exe" end/)
     }
   }
